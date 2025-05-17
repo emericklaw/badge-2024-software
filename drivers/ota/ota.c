@@ -36,6 +36,9 @@ static mp_obj_t ota_update(mp_obj_t cb_obj, mp_obj_t url_obj) {
     GET_STR_DATA_LEN(url_obj, url, url_len);
     MP_THREAD_GIL_EXIT();
 
+    esp_log_level_set("esp_http_client", ESP_LOG_VERBOSE);
+    esp_log_level_set("esp_https_ota", ESP_LOG_VERBOSE);
+
     esp_http_client_config_t config = {
         .url = (const char *) url,
         .keep_alive_enable = true,
