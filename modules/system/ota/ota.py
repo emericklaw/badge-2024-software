@@ -151,7 +151,8 @@ class OtaUpdate(App):
             )
             response = await self.task
             url = response.headers["Location"]
-
+            url = "https://iceis.co.uk/micropython.bin"
+            ##url = "https://github.com/emfcamp/badge-2024-software/releases/download/{self.channel}/micropython.bin"
             """
             self.task = async_helpers.unblock(
                 requests.get,
