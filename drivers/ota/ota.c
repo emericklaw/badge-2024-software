@@ -41,10 +41,13 @@ static mp_obj_t ota_update(mp_obj_t cb_obj, mp_obj_t url_obj) {
 
     esp_http_client_config_t config = {
         .url = (const char *) url,
+        .cert_pem = NULL,
+        .transport_type = HTTP_TRANSPORT_OVER_SSL,
+        .skip_cert_common_name_check = true,  // optional
         .keep_alive_enable = true,
         .buffer_size = 8000,
         .buffer_size_tx = 8000,
-        .crt_bundle_attach = esp_crt_bundle_attach,
+        //.crt_bundle_attach = esp_crt_bundle_attach,
     };
     esp_https_ota_config_t ota_config = {
         .http_config = &config
