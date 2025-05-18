@@ -42,8 +42,9 @@ static mp_obj_t ota_update(mp_obj_t cb_obj, mp_obj_t url_obj) {
     esp_http_client_config_t config = {
         .url = (const char *) url,
         .cert_pem = NULL,
+        .insecure = true, // ← this is the fix!
         .transport_type = HTTP_TRANSPORT_OVER_SSL,
-        .skip_cert_common_name_check = true,  // optional
+        .skip_cert_common_name_check = true,
         .keep_alive_enable = true,
         .buffer_size = 8000,
         .buffer_size_tx = 8000,
