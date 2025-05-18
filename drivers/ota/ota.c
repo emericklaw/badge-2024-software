@@ -41,7 +41,7 @@ static mp_obj_t ota_update(mp_obj_t cb_obj, mp_obj_t url_obj) {
     esp_log_level_set("esp_https_ota", ESP_LOG_VERBOSE);
 
     esp_http_client_config_t config = {
-        .url = (const char *) "https://iceis.co.uk/micropython.bin",
+        .url = (const char *) url,
         .keep_alive_enable = true,
         .buffer_size = 8192,
         .buffer_size_tx = 8192,
